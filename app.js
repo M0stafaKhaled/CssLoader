@@ -46,3 +46,17 @@ window.addEventListener("scroll", () => {
     showloading();
   }
 });
+function filterInput(e) {
+  let term = e.target.value.toUpperCase();
+  let posts = document.querySelectorAll(".post");
+  posts.forEach((post) => {
+    let title = post.querySelector(".post-title").innerText.toUpperCase();
+    let body = post.querySelector(".post-body").innerHTML.toUpperCase();
+    if (title.indexOf(term) > -1 || body.indexOf(term) > -1) {
+      post.style.display = "flex";
+    } else {
+      post.style.display = "none";
+    }
+  });
+}
+filter.addEventListener("input", filterInput);
